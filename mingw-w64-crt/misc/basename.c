@@ -96,7 +96,8 @@ basename (char *path)
 	       * then we transform the full normalised path back into 
 	       * the multibyte character domain, and skip over the dirname,
 	       * to return the resolved basename.  */
-	      if ((len = wcstombs( path, refcopy, len)) != (size_t)(-1))
+		  len= wcstombs( NULL, refcopy, 0);
+	      if (( wcstombs( path, refcopy, len)) != (size_t)(-1))
 		path[len] = '\0';
 	      *refname = L'\0';
 	      if ((len = wcstombs( NULL, refcopy, 0 )) != (size_t)(-1))

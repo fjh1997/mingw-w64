@@ -139,7 +139,8 @@ dirname(char *path)
 	      /* finally ...
 	       * transform the resolved dirname back into the multibyte char domain,
 	       * restore the caller's locale, and return the resultant dirname.  */
-	      if ((len = wcstombs( path, refcopy, len )) != (size_t)(-1))
+		  len= wcstombs( NULL, refcopy, 0);
+	      if (wcstombs( path, refcopy ,len) != (size_t)(-1))
 		path[len] = '\0';
 	    }
 	  else
